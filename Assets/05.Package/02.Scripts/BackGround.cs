@@ -2,17 +2,15 @@ using UnityEngine;
 
 public class BackgroundScroller : MonoBehaviour
 {
-    public GameObject[] backgrounds;          // 3장의 배경 (A, B, C)
+    public GameObject[] backgrounds;         
 
     private Vector3 startPos;
-    //private float repeatWidth = 20f; 
     public float maxScrollSpeed = 10f; // 배경 최대 이동 속도
     private float currentScrollSpeed;
     private float backgroundWidth;
 
     private void Start()
     {
-
         SpriteRenderer sr = backgrounds[0].GetComponent<SpriteRenderer>();
         if (sr != null)
         {
@@ -22,13 +20,11 @@ public class BackgroundScroller : MonoBehaviour
         startPos = transform.position;  
         currentScrollSpeed = maxScrollSpeed;
 
-        // SpeedManager의 OnSpeedChange 이벤트 구독
         SpeedManager.Instance.OnSpeedChange += UpdateBackgroundSpeed;
     }
 
     private void OnDestroy()
     {
-        // 이벤트 구독 해제
         SpeedManager.Instance.OnSpeedChange -= UpdateBackgroundSpeed;
     }
 
@@ -60,15 +56,10 @@ public class BackgroundScroller : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 트럭-몬스터 충돌 횟수가 바뀔 때마다 배경 속도를 업데이트
-    /// </summary>
-    /// <param name="collisionCount">현재 트럭-몬스터 충돌 횟수</param>
+
     private void UpdateBackgroundSpeed(int collisionCount)
     {
-        // 충돌 횟수에 따라 배경 속도를 감소 (예시)
-        currentScrollSpeed = Mathf.Max(0, maxScrollSpeed - collisionCount * 0.5f);
-        Debug.Log($"[Background] Speed updated: {currentScrollSpeed}");
+        currentScrollSpeed = Mathf.Max(0, maxScrollSpeed - collisionCount);
     }
 
 

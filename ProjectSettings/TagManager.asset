@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Hero
   - Monster
+  - Bullet
+  - Box
   layers:
   - Default
   - TransparentFX
@@ -13,12 +15,12 @@ TagManager:
   - 
   - Water
   - UI
+  - Layer0
+  - Layer1
+  - Layer2
+  - Layer3
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Box
   - 
   - 
   - 
